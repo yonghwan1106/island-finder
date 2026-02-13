@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { getIslandData, getIslandById } from "@/lib/data";
@@ -8,7 +8,7 @@ import { Island, Cluster, FerrySchedule } from "@/lib/types";
 import RadarChart from "@/components/RadarChart";
 
 interface IslandPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 // Simple cosine similarity calculation
@@ -46,6 +46,7 @@ function getWeatherIcon(condition: string): string {
 }
 
 export default function IslandPage({ params }: IslandPageProps) {
+  const { id } = use(params);
   const [island, setIsland] = useState<Island | null>(null);
   const [cluster, setCluster] = useState<Cluster | null>(null);
   const [ferrySchedule, setFerrySchedule] = useState<FerrySchedule | null>(null);
@@ -53,7 +54,7 @@ export default function IslandPage({ params }: IslandPageProps) {
 
   useEffect(() => {
     const data = getIslandData();
-    const foundIsland = getIslandById(params.id);
+    const foundIsland = getIslandById(id);
 
     if (foundIsland) {
       setIsland(foundIsland);
@@ -72,7 +73,7 @@ export default function IslandPage({ params }: IslandPageProps) {
       const similar = getSimilarIslands(foundIsland, data.islands);
       setSimilarIslands(similar);
     }
-  }, [params.id]);
+  }, [id]);
 
   if (!island) {
     return (
