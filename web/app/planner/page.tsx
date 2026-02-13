@@ -96,46 +96,48 @@ export default function PlannerPage() {
   const groupLabel = getGroupSizeLabel(groupSize);
 
   return (
-    <div className="min-h-screen py-8 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-navy-500 mb-2">
-            📋 AI 여정 플래너
+    <div className="page-bg min-h-screen py-8 px-4">
+      <div className="noise-overlay" />
+      <div className="max-w-4xl mx-auto relative z-10">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="font-display text-5xl font-bold mb-3 bg-gradient-to-r from-teal-400 via-ocean-400 to-purple-400 bg-clip-text text-transparent">
+            여정 설계사
           </h1>
-          <p className="text-gray-500">
+          <p className="text-gray-300 text-lg">
             시간과 선호도를 입력하면 최적의 섬 여행 코스를 추천합니다
           </p>
         </div>
 
         {/* Input Form - Section Cards */}
-        <div className="space-y-4 mb-8">
+        <div className="space-y-6 mb-12">
           {/* Card 1 - 시간 설정 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">⏰</span>
-              <h3 className="text-lg font-bold text-navy-500">시간 설정</h3>
+          <div className="glass-card border-t-2 border-blue-400/50">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-3xl">⏰</span>
+              <h3 className="font-display text-2xl font-bold text-white">시간 설정</h3>
             </div>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-300 mb-3">
                   출발 시간
                 </label>
                 <input
                   type="time"
                   value={departureTime}
                   onChange={(e) => setDepartureTime(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent"
+                  className="w-full px-4 py-3 glass border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400/50 glow-teal text-white transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-300 mb-3">
                   귀환 시간
                 </label>
                 <input
                   type="time"
                   value={returnTime}
                   onChange={(e) => setReturnTime(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 focus:border-transparent"
+                  className="w-full px-4 py-3 glass border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400/50 glow-teal text-white transition-all"
                 />
               </div>
             </div>
@@ -143,28 +145,28 @@ export default function PlannerPage() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm font-medium"
+                className="mt-4 p-4 glass-strong border border-red-400/30 rounded-xl text-red-300 text-sm font-medium"
               >
                 ⚠️ 귀환 시간은 출발 시간 이후여야 합니다
               </motion.div>
             )}
-            <p className="mt-3 text-xs text-gray-500">
+            <p className="mt-4 text-xs text-gray-400">
               💡 추천: 당일치기 08:00~18:00 / 여유롭게 07:00~20:00
             </p>
           </div>
 
           {/* Card 2 - 인원 설정 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">👥</span>
-              <h3 className="text-lg font-bold text-navy-500">인원 설정</h3>
+          <div className="glass-card border-t-2 border-teal-400/50">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-3xl">👥</span>
+              <h3 className="font-display text-2xl font-bold text-white">인원 설정</h3>
             </div>
-            <div className="text-center mb-4">
-              <div className="inline-flex items-center gap-3 bg-teal-50 px-6 py-3 rounded-full">
-                <span className="text-3xl">{groupLabel.icon}</span>
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center gap-4 glass px-8 py-4 rounded-full bg-gradient-to-r from-teal-500/20 to-ocean-500/20 border border-teal-400/30">
+                <span className="text-4xl">{groupLabel.icon}</span>
                 <div className="text-left">
-                  <p className="text-2xl font-bold text-navy-500">{groupSize}명</p>
-                  <p className="text-sm text-gray-600">{groupLabel.label}</p>
+                  <p className="text-3xl font-bold text-white">{groupSize}명</p>
+                  <p className="text-sm text-gray-300">{groupLabel.label}</p>
                 </div>
               </div>
             </div>
@@ -174,21 +176,21 @@ export default function PlannerPage() {
               max={20}
               value={groupSize}
               onChange={(e) => setGroupSize(Number(e.target.value))}
-              className="w-full accent-teal-500 h-2"
+              className="w-full accent-teal-400 h-2"
             />
-            <div className="flex justify-between text-xs text-gray-400 mt-2 px-1">
+            <div className="flex justify-between text-xs text-gray-400 mt-3 px-1">
               <span>1명</span>
               <span>20명</span>
             </div>
           </div>
 
           {/* Card 3 - 여행 형태 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">🏨</span>
-              <h3 className="text-lg font-bold text-navy-500">여행 형태</h3>
+          <div className="glass-card border-t-2 border-purple-400/50">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-3xl">🏨</span>
+              <h3 className="font-display text-2xl font-bold text-white">여행 형태</h3>
             </div>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-4">
               {[
                 { value: "daytrip", icon: "☀️", label: "당일치기" },
                 { value: "onenight", icon: "🌙", label: "1박 2일" },
@@ -197,36 +199,36 @@ export default function PlannerPage() {
                 <button
                   key={opt.value}
                   onClick={() => setStayType(opt.value as typeof stayType)}
-                  className={`flex flex-col items-center justify-center py-6 rounded-xl text-sm font-medium transition-all ${
+                  className={`glass flex flex-col items-center justify-center py-8 rounded-xl text-sm font-medium transition-all ${
                     stayType === opt.value
-                      ? "bg-teal-500 text-white shadow-lg scale-105"
-                      : "bg-gray-50 text-gray-600 hover:bg-gray-100"
+                      ? "glow-teal border-2 border-teal-400 bg-gradient-to-br from-teal-500/30 to-ocean-500/30 scale-105"
+                      : "border border-white/10 text-gray-300 hover:border-white/30"
                   }`}
                 >
-                  <span className="text-3xl mb-2">{opt.icon}</span>
-                  <span>{opt.label}</span>
+                  <span className="text-4xl mb-3">{opt.icon}</span>
+                  <span className="text-white font-semibold">{opt.label}</span>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Card 4 - 선호도 */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 border border-gray-100">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-2xl">💝</span>
-              <h3 className="text-lg font-bold text-navy-500">
+          <div className="glass-card border-t-2 border-pink-400/50">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-3xl">💝</span>
+              <h3 className="font-display text-2xl font-bold text-white">
                 선호도 <span className="text-sm text-gray-400 font-normal">(복수 선택 가능)</span>
               </h3>
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {PREFERENCE_OPTIONS.map((opt) => (
                 <button
                   key={opt.value}
                   onClick={() => togglePreference(opt.value)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  className={`px-5 py-3 rounded-full text-sm font-medium transition-all ${
                     preferences.includes(opt.value)
-                      ? "bg-teal-500 text-white shadow-md scale-105"
-                      : "bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200"
+                      ? "bg-gradient-to-r from-pink-500 to-purple-500 text-white glow-teal scale-105 shadow-lg"
+                      : "glass border border-white/20 text-gray-300 hover:border-white/40"
                   }`}
                 >
                   {opt.label}
@@ -237,9 +239,9 @@ export default function PlannerPage() {
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
-                className="mt-4 p-3 bg-teal-50 rounded-lg"
+                className="mt-5 p-4 glass bg-teal-500/10 border border-teal-400/30 rounded-xl"
               >
-                <p className="text-sm text-teal-700">
+                <p className="text-sm text-teal-300">
                   <span className="font-semibold">선택한 선호도에 맞는 섬:</span>{" "}
                   {matchingIslands.join(", ")}
                 </p>
@@ -251,36 +253,38 @@ export default function PlannerPage() {
           <button
             onClick={handleGenerate}
             disabled={isTimeInvalid || isGenerating}
-            className={`w-full py-4 font-bold rounded-xl text-lg transition-all ${
+            className={`w-full py-5 font-bold rounded-xl text-lg transition-all ${
               isTimeInvalid || isGenerating
-                ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                : "bg-ocean-gradient text-white hover:opacity-90 hover:shadow-lg"
+                ? "glass opacity-50 cursor-not-allowed text-gray-400"
+                : "gradient-border glow-ocean text-white hover:scale-[1.02]"
             }`}
           >
             {isGenerating ? (
-              <span className="flex items-center justify-center gap-2">
-                <svg
-                  className="animate-spin h-5 w-5"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                  ></circle>
-                  <path
-                    className="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                  ></path>
-                </svg>
+              <div className="flex items-center justify-center gap-3">
+                <div className="glass w-10 h-10 rounded-full flex items-center justify-center">
+                  <svg
+                    className="animate-spin h-5 w-5"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                </div>
                 여정 생성 중...
-              </span>
+              </div>
             ) : (
               "🗓️ 여정 생성하기"
             )}
@@ -297,42 +301,54 @@ export default function PlannerPage() {
               transition={{ duration: 0.3 }}
             >
               {itineraries.length === 0 ? (
-                <div className="bg-white rounded-2xl shadow-sm p-8 text-center border border-gray-100">
-                  <span className="text-4xl block mb-4">😢</span>
-                  <p className="text-gray-500">
+                <div className="glass-card text-center py-12">
+                  <span className="text-5xl block mb-4">😢</span>
+                  <p className="text-gray-300 text-lg">
                     조건에 맞는 여정을 찾지 못했어요.
                     <br />
                     시간을 넓혀보거나 다른 옵션을 선택해보세요.
                   </p>
                 </div>
               ) : (
-                <div className="space-y-4">
+                <div className="space-y-6">
                   {/* Summary Card */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-gradient-to-r from-teal-500 to-ocean-500 text-white rounded-2xl p-6 shadow-lg"
+                    className="glass-strong bg-gradient-to-r from-teal-500/20 via-ocean-500/20 to-purple-500/20 border border-teal-400/30 text-white rounded-2xl p-8 shadow-2xl"
                   >
-                    <div className="flex items-center justify-between flex-wrap gap-4">
-                      <div>
-                        <p className="text-sm opacity-90 mb-1">총 추천 여정</p>
-                        <p className="text-3xl font-bold">{itineraries.length}개</p>
-                      </div>
-                      <div>
-                        <p className="text-sm opacity-90 mb-1">베스트 매치</p>
-                        <p className="text-xl font-bold">{itineraries[0].island.name}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm opacity-90 mb-1">예상 소요 시간</p>
-                        <p className="text-xl font-bold">
+                    <div className="stagger-children flex items-center justify-between flex-wrap gap-6">
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                      >
+                        <p className="text-sm text-gray-300 mb-1">총 추천 여정</p>
+                        <p className="text-4xl font-bold">{itineraries.length}개</p>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        <p className="text-sm text-gray-300 mb-1">베스트 매치</p>
+                        <p className="text-2xl font-bold">{itineraries[0].island.name}</p>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        <p className="text-sm text-gray-300 mb-1">예상 소요 시간</p>
+                        <p className="text-2xl font-bold">
                           {Math.floor(itineraries[0].totalTime / 60)}시간{" "}
                           {itineraries[0].totalTime % 60 > 0 && `${itineraries[0].totalTime % 60}분`}
                         </p>
-                      </div>
+                      </motion.div>
                     </div>
                   </motion.div>
 
-                  <h2 className="text-xl font-bold text-navy-500">
+                  <h2 className="font-display text-3xl font-bold text-white">
                     🎯 추천 여정
                   </h2>
 
@@ -342,20 +358,22 @@ export default function PlannerPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+                      className={`glass-card overflow-hidden ${
+                        idx === 0 ? "gradient-border" : ""
+                      }`}
                     >
                       <button
                         onClick={() =>
                           setExpandedIdx(expandedIdx === idx ? null : idx)
                         }
-                        className="w-full p-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                        className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
                       >
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-5">
                           <div
-                            className={`w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold ${
+                            className={`w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-lg ${
                               idx === 0
-                                ? "bg-gradient-to-br from-teal-400 to-ocean-500"
-                                : "bg-gray-300"
+                                ? "bg-gradient-to-br from-teal-400 to-ocean-500 glow-ocean"
+                                : "glass-strong"
                             }`}
                           >
                             {idx + 1}
@@ -363,12 +381,12 @@ export default function PlannerPage() {
                           <div>
                             <Link
                               href={`/island/${it.island.id}`}
-                              className="font-bold text-navy-500 text-lg hover:text-teal-500 transition-colors"
+                              className="font-display text-2xl font-bold text-white hover:text-teal-300 transition-colors"
                               onClick={(e) => e.stopPropagation()}
                             >
                               {it.island.name}
                             </Link>
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-400 mt-1">
                               {it.island.cluster} · {it.departureFerry} 출발 ·{" "}
                               {Math.floor(it.totalTime / 60)}시간{" "}
                               {it.totalTime % 60 > 0 && `${it.totalTime % 60}분`} 코스
@@ -378,7 +396,7 @@ export default function PlannerPage() {
                         <motion.span
                           animate={{ rotate: expandedIdx === idx ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
-                          className="text-xl text-gray-400"
+                          className="text-2xl text-gray-400"
                         >
                           ⌄
                         </motion.span>
@@ -393,77 +411,77 @@ export default function PlannerPage() {
                             transition={{ duration: 0.3 }}
                             className="overflow-hidden"
                           >
-                            <div className="px-5 pb-5 border-t border-gray-100">
+                            <div className="px-6 pb-6 border-t border-white/10">
                               {/* Ferry Info with Animation */}
-                              <div className="mt-4 mb-4 bg-teal-50 rounded-xl p-4">
+                              <div className="mt-6 mb-6 glass bg-teal-500/10 border border-teal-400/30 rounded-xl p-5">
                                 <div className="flex items-center justify-between text-sm">
                                   <div className="text-center">
-                                    <p className="font-bold text-navy-500">
+                                    <p className="font-bold text-white text-base">
                                       {it.departureFerry}
                                     </p>
-                                    <p className="text-gray-500">
+                                    <p className="text-gray-400 mt-1">
                                       {it.ferry.route.split("→")[0] || "출발"}
                                     </p>
                                   </div>
-                                  <div className="flex-1 mx-4 flex items-center">
-                                    <div className="flex-1 h-px bg-teal-300" />
+                                  <div className="flex-1 mx-6 flex items-center">
+                                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-teal-400 to-transparent" />
                                     <motion.span
                                       animate={{ x: [0, 10, 0] }}
                                       transition={{ repeat: Infinity, duration: 2 }}
-                                      className="px-2 text-xl"
+                                      className="px-3 text-2xl"
                                     >
                                       🚢
                                     </motion.span>
-                                    <span className="text-xs text-teal-600">
+                                    <span className="text-xs text-teal-400 font-semibold glass px-2 py-1 rounded-full">
                                       {it.ferry.duration}분
                                     </span>
-                                    <div className="flex-1 h-px bg-teal-300" />
+                                    <div className="flex-1 h-px bg-gradient-to-r from-transparent via-teal-400 to-transparent" />
                                   </div>
                                   <div className="text-center">
-                                    <p className="font-bold text-navy-500">
+                                    <p className="font-bold text-white text-base">
                                       {it.island.name}
                                     </p>
-                                    <p className="text-gray-500">도착</p>
+                                    <p className="text-gray-400 mt-1">도착</p>
                                   </div>
                                 </div>
                                 {it.ferry.fare > 0 && (
-                                  <p className="text-xs text-teal-600 text-center mt-2">
+                                  <p className="text-xs text-teal-300 text-center mt-3 font-medium">
                                     편도 요금: {it.ferry.fare.toLocaleString()}원
                                   </p>
                                 )}
                               </div>
 
                               {/* Timeline - Vertical Stepper */}
-                              <div className="relative pl-10">
+                              <div className="relative pl-12">
                                 {it.schedule.map((item, i) => (
                                   <motion.div
                                     key={i}
                                     initial={{ opacity: 0, x: -20 }}
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.05 }}
-                                    className="relative pb-6 last:pb-0"
+                                    className="relative pb-8 last:pb-0"
                                   >
                                     {/* Connecting Line */}
                                     {i < it.schedule.length - 1 && (
-                                      <div className="absolute left-[-24px] top-8 bottom-0 w-0.5 bg-gradient-to-b from-teal-400 to-teal-200" />
+                                      <div className="absolute left-[-28px] top-10 bottom-0 w-0.5 bg-gradient-to-b from-teal-400 via-ocean-400 to-teal-400" />
                                     )}
                                     {/* Dot */}
-                                    <div className="absolute left-[-30px] top-2 w-3 h-3 rounded-full border-2 border-teal-400 bg-white shadow-sm" />
+                                    <div className="absolute left-[-32px] top-3 w-4 h-4 rounded-full border-2 border-teal-400 glass bg-teal-500/20 shadow-lg" />
 
-                                    <div className="flex items-start gap-3">
-                                      <span className="text-xs font-mono font-bold text-teal-600 mt-1 w-12 flex-shrink-0">
+                                    <div className="flex items-start gap-4">
+                                      <span className="text-xs font-mono font-bold text-teal-400 mt-1 w-14 flex-shrink-0 glass px-2 py-1 rounded">
                                         {item.time}
                                       </span>
-                                      <span className="text-2xl">{item.icon}</span>
+                                      <span className="text-3xl">{item.icon}</span>
                                       <div className="flex-1">
-                                        <p className="font-semibold text-navy-500">
+                                        <p className="font-semibold text-white text-lg">
                                           {item.activity}
                                         </p>
-                                        <p className="text-xs text-gray-400 mt-0.5">
+                                        <p className="text-sm text-gray-400 mt-1">
                                           {item.location}
                                         </p>
                                         {item.duration > 0 && (
-                                          <span className="inline-block mt-1 px-2 py-0.5 bg-teal-50 text-teal-600 text-xs rounded-full font-medium">
+                                          <span className="inline-block mt-2 px-3 py-1 glass bg-teal-500/20 border border-teal-400/30 text-teal-300 text-xs rounded-full font-medium">
                                             약 {item.duration}분
                                           </span>
                                         )}
@@ -474,33 +492,48 @@ export default function PlannerPage() {
                               </div>
 
                               {/* Return Ferry */}
-                              <div className="mt-4 bg-gray-50 rounded-xl p-3 text-center text-sm text-gray-600">
+                              <div className="mt-6 glass bg-gray-500/10 border border-white/10 rounded-xl p-4 text-center text-sm text-gray-300">
                                 🚢 {it.returnFerry} 귀환편 탑승 → 여수 도착
                               </div>
 
                               {/* Journey Summary Footer */}
-                              <div className="mt-4 pt-4 border-t border-gray-100 grid grid-cols-3 gap-4 text-center">
-                                <div>
-                                  <p className="text-xs text-gray-500 mb-1">총 소요 시간</p>
-                                  <p className="font-bold text-navy-500">
+                              <div className="mt-6 pt-6 border-t border-white/10 stagger-children grid grid-cols-3 gap-6 text-center">
+                                <motion.div
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ delay: 0.1 }}
+                                  className="glass-strong p-4 rounded-xl"
+                                >
+                                  <p className="text-xs text-gray-400 mb-2">총 소요 시간</p>
+                                  <p className="font-bold text-white text-lg">
                                     {Math.floor(it.totalTime / 60)}시간{" "}
                                     {it.totalTime % 60 > 0 && `${it.totalTime % 60}분`}
                                   </p>
-                                </div>
-                                <div>
-                                  <p className="text-xs text-gray-500 mb-1">예상 비용</p>
-                                  <p className="font-bold text-navy-500">
+                                </motion.div>
+                                <motion.div
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ delay: 0.2 }}
+                                  className="glass-strong p-4 rounded-xl"
+                                >
+                                  <p className="text-xs text-gray-400 mb-2">예상 비용</p>
+                                  <p className="font-bold text-white text-lg">
                                     {it.ferry.fare > 0
                                       ? `${(it.ferry.fare * 2).toLocaleString()}원`
                                       : "무료"}
                                   </p>
-                                </div>
-                                <div>
-                                  <p className="text-xs text-gray-500 mb-1">주요 활동</p>
-                                  <p className="font-bold text-navy-500">
+                                </motion.div>
+                                <motion.div
+                                  initial={{ opacity: 0, y: 10 }}
+                                  animate={{ opacity: 1, y: 0 }}
+                                  transition={{ delay: 0.3 }}
+                                  className="glass-strong p-4 rounded-xl"
+                                >
+                                  <p className="text-xs text-gray-400 mb-2">주요 활동</p>
+                                  <p className="font-bold text-white text-lg">
                                     {it.schedule.length - 2}개
                                   </p>
-                                </div>
+                                </motion.div>
                               </div>
                             </div>
                           </motion.div>
