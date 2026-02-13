@@ -73,7 +73,7 @@ export default function DashboardPage() {
   const islands = data.islands;
   const [selectedCluster, setSelectedCluster] = useState<string | null>(null);
   const [selectedIsland, setSelectedIsland] = useState<Island | null>(null);
-  const [activeTab, setActiveTab] = useState<"attractions" | "ferry" | "weather" | "activities">(
+  const [activeTab, setActiveTab] = useState<"attractions" | "ferry" | "weather" | "activities" | "marine">(
     "attractions"
   );
 
@@ -342,6 +342,7 @@ export default function DashboardPage() {
                   { id: "ferry", label: "여객선", icon: Ship },
                   { id: "weather", label: "날씨", icon: Cloud },
                   { id: "activities", label: "활동", icon: Users },
+                  { id: "marine", label: "해양환경", icon: Waves },
                 ].map((tab) => (
                   <button
                     key={tab.id}
@@ -560,6 +561,73 @@ export default function DashboardPage() {
                           ))}
                         </div>
                       </div>
+                    </div>
+                  )}
+
+                  {activeTab === "marine" && (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="glass-card p-4 rounded-lg bg-cyan-500/5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Waves className="w-5 h-5 text-cyan-600" />
+                            <p className="text-navy-600 text-sm">해수면 온도</p>
+                          </div>
+                          <p className="text-2xl font-bold text-navy-900">
+                            {selectedIsland.marine.seaTemp}°C
+                          </p>
+                        </div>
+                        <div className="glass-card p-4 rounded-lg bg-teal-500/5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <MapPin className="w-5 h-5 text-teal-600" />
+                            <p className="text-navy-600 text-sm">수질 등급</p>
+                          </div>
+                          <p className="text-2xl font-bold text-navy-900">
+                            {selectedIsland.marine.waterQuality}등급
+                          </p>
+                        </div>
+                        <div className="glass-card p-4 rounded-lg bg-ocean-500/5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Wind className="w-5 h-5 text-ocean-600" />
+                            <p className="text-navy-600 text-sm">투명도</p>
+                          </div>
+                          <p className="text-2xl font-bold text-navy-900">
+                            {selectedIsland.marine.transparency}m
+                          </p>
+                        </div>
+                        <div className="glass-card p-4 rounded-lg bg-blue-500/5">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Cloud className="w-5 h-5 text-blue-600" />
+                            <p className="text-navy-600 text-sm">용존산소</p>
+                          </div>
+                          <p className="text-2xl font-bold text-navy-900">
+                            {selectedIsland.marine.dissolvedOxygen} mg/L
+                          </p>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-500 text-right">출처: 해양환경공단 해양환경측정망</p>
+
+                      {selectedIsland.festivals.length > 0 && (
+                        <div className="mt-4 pt-4 border-t border-navy-100">
+                          <h3 className="font-bold text-navy-900 mb-3 flex items-center gap-2">
+                            <Calendar className="w-5 h-5 text-sand-600" />
+                            지역 축제
+                          </h3>
+                          <div className="space-y-2">
+                            {selectedIsland.festivals.map((fest, idx) => (
+                              <div key={idx} className="glass-card p-3 rounded-lg">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-xl">🎪</span>
+                                  <div>
+                                    <p className="font-semibold text-navy-700">{fest.name}</p>
+                                    <p className="text-xs text-teal-600">{fest.period} · {fest.description}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                          <p className="text-xs text-gray-500 text-right mt-2">출처: 문화체육관광부 지역축제 정보</p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </motion.div>

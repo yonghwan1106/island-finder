@@ -391,6 +391,64 @@ export default function IslandPage({ params }: IslandPageProps) {
           </div>
         </motion.div>
 
+        {/* Marine Environment - 해양환경공단 해양환경측정망 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.48 }}
+          className="glass-card p-8 md:p-10 mb-6"
+        >
+          <h2 className="text-3xl font-display font-bold text-navy-700 mb-3">해양 환경</h2>
+          <p className="text-sm text-gray-500 mb-8">출처: 해양환경공단 해양환경측정망</p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="text-center p-6 glass rounded-xl bg-cyan-500/5">
+              <div className="text-4xl font-bold text-cyan-700">{island.marine.seaTemp}°C</div>
+              <div className="text-sm text-gray-600 mt-2">해수면 온도</div>
+            </div>
+            <div className="text-center p-6 glass rounded-xl bg-teal-500/5">
+              <div className="text-4xl font-bold text-teal-700">{island.marine.waterQuality}등급</div>
+              <div className="text-sm text-gray-600 mt-2">수질 등급</div>
+            </div>
+            <div className="text-center p-6 glass rounded-xl bg-ocean-500/5">
+              <div className="text-4xl font-bold text-ocean-700">{island.marine.transparency}m</div>
+              <div className="text-sm text-gray-600 mt-2">투명도</div>
+            </div>
+            <div className="text-center p-6 glass rounded-xl bg-blue-500/5">
+              <div className="text-4xl font-bold text-blue-700">{island.marine.dissolvedOxygen}</div>
+              <div className="text-sm text-gray-600 mt-2">용존산소 (mg/L)</div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Festivals - 문화체육관광부 지역축제 정보 */}
+        {island.festivals.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.49 }}
+            className="glass-card p-8 md:p-10 mb-6"
+          >
+            <h2 className="text-3xl font-display font-bold text-navy-700 mb-3">지역 축제</h2>
+            <p className="text-sm text-gray-500 mb-8">출처: 문화체육관광부 지역축제 정보</p>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              {island.festivals.map((festival, idx) => (
+                <div key={idx} className="glass gradient-border rounded-xl p-6">
+                  <div className="flex items-start gap-4">
+                    <span className="text-3xl">🎪</span>
+                    <div>
+                      <h3 className="font-bold text-navy-700 text-lg mb-1">{festival.name}</h3>
+                      <p className="text-sm font-semibold text-teal-600 mb-2">{festival.period}</p>
+                      <p className="text-sm text-gray-600">{festival.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
         {/* Similar Islands */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

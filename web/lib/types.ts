@@ -16,6 +16,19 @@ export interface Weather {
   wave: number;
 }
 
+export interface MarineEnvironment {
+  seaTemp: number;
+  waterQuality: number;
+  transparency: number;
+  dissolvedOxygen: number;
+}
+
+export interface Festival {
+  name: string;
+  period: string;
+  description: string;
+}
+
 export interface Island {
   id: string;
   name: string;
@@ -41,6 +54,8 @@ export interface Island {
   status: "green" | "yellow" | "red";
   nextFerry: string;
   weather: Weather;
+  marine: MarineEnvironment;
+  festivals: Festival[];
   hashtags: string[];
 }
 
