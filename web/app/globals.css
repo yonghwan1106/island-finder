@@ -51,7 +51,7 @@ body {
   border-radius: 3px;
 }
 
-/* Quiz animations */
+/* Legacy animation classes (kept for compatibility) */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -75,4 +75,74 @@ body {
 }
 .animate-wave {
   animation: wave 7s ease-in-out infinite;
+}
+
+/* Skeleton loading */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Circular progress animation */
+@keyframes circleProgress {
+  from { stroke-dashoffset: var(--circumference); }
+  to { stroke-dashoffset: var(--dash-offset); }
+}
+.animate-circle-progress {
+  animation: circleProgress 1.5s ease-out forwards;
+}
+
+/* Stepper line animation */
+@keyframes growLine {
+  from { height: 0; }
+  to { height: 100%; }
+}
+.animate-grow-line {
+  animation: growLine 0.5s ease-out forwards;
+}
+
+/* Touch target minimum for mobile */
+@media (max-width: 640px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Stagger children animation helper */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 400ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 500ms; }
+
+/* Quiz gradient backgrounds */
+.quiz-bg-ocean {
+  background: linear-gradient(135deg, #E6F7FA 0%, #B3E8F2 100%);
+}
+.quiz-bg-forest {
+  background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%);
+}
+.quiz-bg-sunset {
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+}
+.quiz-bg-culture {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+}
+.quiz-bg-adventure {
+  background: linear-gradient(135deg, #F0FDFA 0%, #99F6E4 100%);
+}
+.quiz-bg-vibe {
+  background: linear-gradient(135deg, #E6F7FA 0%, #CCFBF1 100%);
+}
+
+/* Radar chart tooltip */
+.recharts-tooltip-wrapper {
+  outline: none !important;
 }

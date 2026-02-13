@@ -24,7 +24,9 @@ export default function IslandMap({
   selectedIsland,
 }: IslandMapProps) {
   const mapRef = useRef<L.Map | null>(null);
-  const markersRef = useRef<L.CircleMarker[]>([]);
+  const markersRef = useRef<Map<string, L.CircleMarker>>(new Map());
+  const highlightLayerRef = useRef<L.CircleMarker | null>(null);
+  const pulseIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (mapRef.current) return;
@@ -44,6 +46,9 @@ export default function IslandMap({
     mapRef.current = map;
 
     return () => {
+      if (pulseIntervalRef.current) {
+        clearInterval(pulseIntervalRef.current);
+      }
       map.remove();
       mapRef.current = null;
     };
@@ -53,7 +58,7 @@ export default function IslandMap({
     if (!mapRef.current) return;
 
     markersRef.current.forEach((m) => m.remove());
-    markersRef.current = [];
+    markersRef.current.clear();
 
     islands.forEach((island) => {
       const cluster = clusters.find((c) => c.islands.includes(island.id));
@@ -91,16 +96,78 @@ export default function IslandMap({
       });
 
       marker.addTo(mapRef.current!);
-      markersRef.current.push(marker);
+      markersRef.current.set(island.id, marker);
     });
   }, [islands, clusters, onSelectIsland]);
 
   useEffect(() => {
-    if (!mapRef.current || !selectedIsland) return;
-    mapRef.current.flyTo([selectedIsland.lat, selectedIsland.lng], 12, {
-      duration: 0.8,
+    if (!mapRef.current) return;
+
+    // Cleanup previous highlight
+    if (highlightLayerRef.current) {
+      mapRef.current.removeLayer(highlightLayerRef.current);
+      highlightLayerRef.current = null;
+    }
+    if (pulseIntervalRef.current) {
+      clearInterval(pulseIntervalRef.current);
+      pulseIntervalRef.current = null;
+    }
+
+    // Reset all markers to default size
+    markersRef.current.forEach((marker, islandId) => {
+      const island = islands.find((i) => i.id === islandId);
+      if (island) {
+        marker.setRadius(Math.max(6, Math.min(14, Math.sqrt(island.area) * 3)));
+      }
     });
-  }, [selectedIsland]);
+
+    if (selectedIsland) {
+      // Fly to selected island
+      mapRef.current.flyTo([selectedIsland.lat, selectedIsland.lng], 12, {
+        duration: 0.8,
+      });
+
+      // Increase selected marker size
+      const selectedMarker = markersRef.current.get(selectedIsland.id);
+      if (selectedMarker) {
+        const baseRadius = Math.max(6, Math.min(14, Math.sqrt(selectedIsland.area) * 3));
+        selectedMarker.setRadius(baseRadius + 4);
+      }
+
+      // Create pulsing ring effect
+      const highlightRing = L.circleMarker([selectedIsland.lat, selectedIsland.lng], {
+        radius: 20,
+        fillColor: "#14b8a6",
+        color: "#0d9488",
+        weight: 3,
+        opacity: 0.8,
+        fillOpacity: 0.2,
+      });
+
+      highlightRing.addTo(mapRef.current);
+      highlightLayerRef.current = highlightRing;
+
+      // Pulse animation
+      let opacityValue = 0.8;
+      let direction = -1;
+      pulseIntervalRef.current = setInterval(() => {
+        opacityValue += direction * 0.1;
+        if (opacityValue <= 0.2) {
+          opacityValue = 0.2;
+          direction = 1;
+        } else if (opacityValue >= 0.8) {
+          opacityValue = 0.8;
+          direction = -1;
+        }
+        if (highlightLayerRef.current) {
+          highlightLayerRef.current.setStyle({
+            opacity: opacityValue,
+            fillOpacity: opacityValue * 0.5,
+          });
+        }
+      }, 100);
+    }
+  }, [selectedIsland, islands]);
 
   return (
     <div

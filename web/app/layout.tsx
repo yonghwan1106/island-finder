@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import NavBar from "@/components/NavBar";
 
 export const metadata: Metadata = {
   title: "섬파인더 Island Finder | 2026 여수세계섬박람회",
@@ -29,39 +30,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-gradient-to-b from-navy-50 via-white to-ocean-50">
-        <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/20">
-          <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2">
-              <span className="text-2xl">🏝️</span>
-              <span className="font-bold text-lg text-navy-500">
-                섬파인더
-              </span>
-              <span className="text-xs text-ocean-600 hidden sm:inline">
-                Island Finder
-              </span>
-            </a>
-            <div className="flex items-center gap-1 sm:gap-4">
-              <a
-                href="/quiz"
-                className="px-3 py-2 text-sm font-medium text-navy-500 hover:text-teal-600 transition-colors rounded-lg hover:bg-teal-50"
-              >
-                나의 섬 찾기
-              </a>
-              <a
-                href="/dashboard"
-                className="px-3 py-2 text-sm font-medium text-navy-500 hover:text-teal-600 transition-colors rounded-lg hover:bg-teal-50"
-              >
-                섬 대시보드
-              </a>
-              <a
-                href="/planner"
-                className="px-3 py-2 text-sm font-medium text-navy-500 hover:text-teal-600 transition-colors rounded-lg hover:bg-teal-50"
-              >
-                여정 플래너
-              </a>
-            </div>
-          </div>
-        </nav>
+        <NavBar />
         <main className="pt-16">{children}</main>
         <footer className="bg-navy-500 text-white py-8 mt-16">
           <div className="max-w-6xl mx-auto px-4 text-center">
