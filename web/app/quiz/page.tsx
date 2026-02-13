@@ -104,12 +104,12 @@ export default function QuizPage() {
             <h1 className="font-display text-5xl text-navy-500 mb-4 glow-ocean" style={{ textShadow: "0 2px 20px rgba(13, 148, 136, 0.3)" }}>
               당신의 섬을 찾았어요!
             </h1>
-            <div className="glass-card inline-block px-8 py-4 rounded-2xl">
+            <div className="card-elevated inline-block px-8 py-4 rounded-2xl">
               <p className="text-2xl font-bold text-teal-600 glow-teal">
                 {userType}
               </p>
             </div>
-            <p className="text-gray-400 mt-4 text-lg">
+            <p className="text-gray-500 mt-4 text-lg">
               AI가 분석한 나만의 맞춤 섬 Top 3
             </p>
           </motion.div>
@@ -119,7 +119,7 @@ export default function QuizPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="glass-card gradient-border p-8 mb-10 rounded-3xl"
+            className="card-elevated p-8 mb-10 rounded-3xl"
           >
             <h2 className="font-display text-3xl text-center mb-6 text-navy-500 glow-ocean">
               나의 취향 vs 1위 섬 특성
@@ -142,9 +142,9 @@ export default function QuizPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="glass-card p-6 rounded-2xl mb-8"
+            className="card-solid p-6 rounded-2xl mb-8"
           >
-            <p className="text-center text-gray-600 mb-4 font-medium">결과 공유하기</p>
+            <p className="text-center text-gray-700 mb-4 font-medium">결과 공유하기</p>
             <div className="flex justify-center gap-3 flex-wrap">
               <button
                 onClick={handleKakaoShare}
@@ -162,7 +162,7 @@ export default function QuizPage() {
               </button>
               <button
                 onClick={handleCopyLink}
-                className="px-6 py-3 glass-strong text-navy-500 font-bold rounded-xl transition-all hover:scale-105 flex items-center gap-2 border border-white/20"
+                className="px-6 py-3 bg-gray-100 text-navy-500 font-bold rounded-xl transition-all hover:scale-105 flex items-center gap-2 border border-gray-200"
               >
                 <span>🔗</span>
                 링크 복사
@@ -177,7 +177,7 @@ export default function QuizPage() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="fixed top-8 left-1/2 transform -translate-x-1/2 glass-strong px-8 py-4 rounded-2xl z-50 text-navy-500 font-bold shadow-2xl"
+                className="fixed top-8 left-1/2 transform -translate-x-1/2 bg-white px-8 py-4 rounded-2xl z-50 text-navy-500 font-bold shadow-2xl border border-gray-200"
               >
                 ✓ 링크가 복사되었습니다!
               </motion.div>
@@ -192,7 +192,7 @@ export default function QuizPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.15 }}
-                className="glass-card rounded-3xl overflow-hidden hover:scale-[1.02] transition-all duration-300"
+                className="card-solid rounded-3xl overflow-hidden hover:scale-[1.02] transition-all duration-300"
                 style={{
                   borderLeft: i === 0 ? "6px solid #F59E0B" : i === 1 ? "6px solid #D1D5DB" : "6px solid #D97706"
                 }}
@@ -212,7 +212,7 @@ export default function QuizPage() {
                       {i === 0 ? "🥇" : i === 1 ? "🥈" : "🥉"}
                     </span>
                     <div className="text-center">
-                      <div className="text-5xl font-bold bg-gradient-to-r from-teal-500 to-ocean-500 bg-clip-text text-transparent mb-2">
+                      <div className="text-5xl font-bold text-teal-600 mb-2">
                         {result.matchPercent}%
                       </div>
                       <span className="text-sm text-gray-500 font-medium">매칭률</span>
@@ -233,12 +233,12 @@ export default function QuizPage() {
                           {result.island.nameEn}
                         </span>
                       </div>
-                      <span className="px-4 py-2 glass-strong text-teal-600 rounded-full text-sm font-bold border border-teal-200">
+                      <span className="px-4 py-2 bg-teal-50 text-teal-600 rounded-full text-sm font-bold border border-teal-200">
                         {result.island.cluster}
                       </span>
                     </div>
 
-                    <p className="text-gray-600 mb-5 leading-relaxed text-base">
+                    <p className="text-gray-700 mb-5 leading-relaxed text-base">
                       {result.island.description}
                     </p>
 
@@ -246,7 +246,7 @@ export default function QuizPage() {
                       {result.reasons.map((reason, j) => (
                         <span
                           key={j}
-                          className="px-4 py-2 glass text-ocean-700 rounded-full text-sm font-medium border border-ocean-200"
+                          className="px-4 py-2 bg-ocean-50 text-ocean-700 rounded-full text-sm font-medium border border-ocean-200"
                         >
                           ✓ {reason}
                         </span>
@@ -282,7 +282,7 @@ export default function QuizPage() {
           >
             <button
               onClick={handleReset}
-              className="px-8 py-4 glass-strong text-navy-500 font-bold rounded-xl hover:scale-105 transition-all border border-white/30 glow-ocean"
+              className="px-8 py-4 bg-white text-navy-500 font-bold rounded-xl hover:scale-105 transition-all border border-gray-200 shadow-sm"
             >
               🔄 다시 해보기
             </button>
@@ -315,7 +315,7 @@ export default function QuizPage() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-10 glass p-6 rounded-2xl"
+          className="mb-10 card-solid p-6 rounded-2xl"
         >
           <div className="flex justify-center gap-3 mb-4">
             {questions.map((q, i) => {
@@ -328,10 +328,10 @@ export default function QuizPage() {
                   transition={{ delay: i * 0.05 }}
                   className={`w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-300 ${
                     i < step
-                      ? "glass-strong text-teal-600 border-2 border-teal-400"
+                      ? "bg-teal-50 text-teal-600 border-2 border-teal-400"
                       : i === step
-                      ? "glass-strong text-ocean-600 ring-4 ring-teal-300 scale-110 glow-teal"
-                      : "glass text-gray-400"
+                      ? "bg-white text-ocean-600 ring-4 ring-teal-300 scale-110 shadow-lg"
+                      : "bg-gray-100 text-gray-400"
                   }`}
                 >
                   {icon}
@@ -346,7 +346,7 @@ export default function QuizPage() {
             </span>
             <span>{Math.round(((step + 1) / questions.length) * 100)}%</span>
           </div>
-          <div className="h-3 glass rounded-full overflow-hidden">
+          <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${((step + 1) / questions.length) * 100}%` }}
@@ -383,10 +383,10 @@ export default function QuizPage() {
                     transition={{ delay: i * 0.1 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`glass-card p-8 rounded-2xl text-center transition-all duration-300 ${
+                    className={`card-solid p-8 rounded-2xl text-center transition-all duration-300 ${
                       selectedOption === i
-                        ? "gradient-border glow-teal scale-105"
-                        : "hover:gradient-border"
+                        ? "ring-2 ring-teal-500 bg-teal-50 scale-105"
+                        : "hover:shadow-lg"
                     }`}
                   >
                     <span className="text-5xl block mb-4">
@@ -411,7 +411,7 @@ export default function QuizPage() {
               setStep(step - 1);
               setAnswers(answers.slice(0, -1));
             }}
-            className="mt-8 px-6 py-3 glass-strong text-navy-500 rounded-full text-sm mx-auto block font-bold hover:scale-105 transition-all border border-white/30"
+            className="mt-8 px-6 py-3 bg-white text-navy-500 rounded-full text-sm mx-auto block font-bold hover:scale-105 transition-all border border-gray-200 shadow-sm"
           >
             ← 이전 질문으로
           </motion.button>

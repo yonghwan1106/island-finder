@@ -101,10 +101,10 @@ export default function PlannerPage() {
       <div className="max-w-4xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="font-display text-5xl font-bold mb-3 bg-gradient-to-r from-teal-400 via-ocean-400 to-purple-400 bg-clip-text text-transparent">
+          <h1 className="font-display text-5xl font-bold mb-3 text-navy-700">
             여정 설계사
           </h1>
-          <p className="text-gray-300 text-lg">
+          <p className="text-gray-500 text-lg">
             시간과 선호도를 입력하면 최적의 섬 여행 코스를 추천합니다
           </p>
         </div>
@@ -112,32 +112,32 @@ export default function PlannerPage() {
         {/* Input Form - Section Cards */}
         <div className="space-y-6 mb-12">
           {/* Card 1 - 시간 설정 */}
-          <div className="glass-card border-t-2 border-blue-400/50">
+          <div className="card-solid p-8 rounded-2xl border-l-4 border-blue-400">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-3xl">⏰</span>
-              <h3 className="font-display text-2xl font-bold text-white">시간 설정</h3>
+              <h3 className="font-display text-2xl font-bold text-navy-700">시간 설정</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-3">
+                <label className="block text-sm font-medium text-gray-600 mb-3">
                   출발 시간
                 </label>
                 <input
                   type="time"
                   value={departureTime}
                   onChange={(e) => setDepartureTime(e.target.value)}
-                  className="w-full px-4 py-3 glass border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400/50 glow-teal text-white transition-all"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 text-navy-700 transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-300 mb-3">
+                <label className="block text-sm font-medium text-gray-600 mb-3">
                   귀환 시간
                 </label>
                 <input
                   type="time"
                   value={returnTime}
                   onChange={(e) => setReturnTime(e.target.value)}
-                  className="w-full px-4 py-3 glass border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400/50 glow-teal text-white transition-all"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-400 text-navy-700 transition-all"
                 />
               </div>
             </div>
@@ -145,28 +145,28 @@ export default function PlannerPage() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mt-4 p-4 glass-strong border border-red-400/30 rounded-xl text-red-300 text-sm font-medium"
+                className="mt-4 p-4 bg-red-50 border border-red-300 rounded-xl text-red-600 text-sm font-medium"
               >
                 ⚠️ 귀환 시간은 출발 시간 이후여야 합니다
               </motion.div>
             )}
-            <p className="mt-4 text-xs text-gray-400">
+            <p className="mt-4 text-xs text-gray-500">
               💡 추천: 당일치기 08:00~18:00 / 여유롭게 07:00~20:00
             </p>
           </div>
 
           {/* Card 2 - 인원 설정 */}
-          <div className="glass-card border-t-2 border-teal-400/50">
+          <div className="card-solid p-8 rounded-2xl border-l-4 border-teal-400">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-3xl">👥</span>
-              <h3 className="font-display text-2xl font-bold text-white">인원 설정</h3>
+              <h3 className="font-display text-2xl font-bold text-navy-700">인원 설정</h3>
             </div>
             <div className="text-center mb-6">
-              <div className="inline-flex items-center gap-4 glass px-8 py-4 rounded-full bg-gradient-to-r from-teal-500/20 to-ocean-500/20 border border-teal-400/30">
+              <div className="inline-flex items-center gap-4 bg-teal-50 px-8 py-4 rounded-full border border-teal-200">
                 <span className="text-4xl">{groupLabel.icon}</span>
                 <div className="text-left">
-                  <p className="text-3xl font-bold text-white">{groupSize}명</p>
-                  <p className="text-sm text-gray-300">{groupLabel.label}</p>
+                  <p className="text-3xl font-bold text-navy-700">{groupSize}명</p>
+                  <p className="text-sm text-gray-500">{groupLabel.label}</p>
                 </div>
               </div>
             </div>
@@ -178,17 +178,17 @@ export default function PlannerPage() {
               onChange={(e) => setGroupSize(Number(e.target.value))}
               className="w-full accent-teal-400 h-2"
             />
-            <div className="flex justify-between text-xs text-gray-400 mt-3 px-1">
+            <div className="flex justify-between text-xs text-gray-500 mt-3 px-1">
               <span>1명</span>
               <span>20명</span>
             </div>
           </div>
 
           {/* Card 3 - 여행 형태 */}
-          <div className="glass-card border-t-2 border-purple-400/50">
+          <div className="card-solid p-8 rounded-2xl border-l-4 border-purple-400">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-3xl">🏨</span>
-              <h3 className="font-display text-2xl font-bold text-white">여행 형태</h3>
+              <h3 className="font-display text-2xl font-bold text-navy-700">여행 형태</h3>
             </div>
             <div className="grid grid-cols-3 gap-4">
               {[
@@ -199,25 +199,25 @@ export default function PlannerPage() {
                 <button
                   key={opt.value}
                   onClick={() => setStayType(opt.value as typeof stayType)}
-                  className={`glass flex flex-col items-center justify-center py-8 rounded-xl text-sm font-medium transition-all ${
+                  className={`card-solid flex flex-col items-center justify-center py-8 rounded-xl text-sm font-medium transition-all ${
                     stayType === opt.value
-                      ? "glow-teal border-2 border-teal-400 bg-gradient-to-br from-teal-500/30 to-ocean-500/30 scale-105"
-                      : "border border-white/10 text-gray-300 hover:border-white/30"
+                      ? "ring-2 ring-teal-500 bg-teal-50 border-teal-300 scale-105"
+                      : "border border-gray-200 text-gray-600 hover:border-gray-300"
                   }`}
                 >
                   <span className="text-4xl mb-3">{opt.icon}</span>
-                  <span className="text-white font-semibold">{opt.label}</span>
+                  <span className="text-navy-700 font-semibold">{opt.label}</span>
                 </button>
               ))}
             </div>
           </div>
 
           {/* Card 4 - 선호도 */}
-          <div className="glass-card border-t-2 border-pink-400/50">
+          <div className="card-solid p-8 rounded-2xl border-l-4 border-pink-400">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-3xl">💝</span>
-              <h3 className="font-display text-2xl font-bold text-white">
-                선호도 <span className="text-sm text-gray-400 font-normal">(복수 선택 가능)</span>
+              <h3 className="font-display text-2xl font-bold text-navy-700">
+                선호도 <span className="text-sm text-gray-500 font-normal">(복수 선택 가능)</span>
               </h3>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -228,7 +228,7 @@ export default function PlannerPage() {
                   className={`px-5 py-3 rounded-full text-sm font-medium transition-all ${
                     preferences.includes(opt.value)
                       ? "bg-gradient-to-r from-pink-500 to-purple-500 text-white glow-teal scale-105 shadow-lg"
-                      : "glass border border-white/20 text-gray-300 hover:border-white/40"
+                      : "bg-gray-50 border border-gray-200 text-gray-600 hover:border-gray-300"
                   }`}
                 >
                   {opt.label}
@@ -239,9 +239,9 @@ export default function PlannerPage() {
               <motion.div
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
-                className="mt-5 p-4 glass bg-teal-500/10 border border-teal-400/30 rounded-xl"
+                className="mt-5 p-4 bg-teal-50 border border-teal-200 rounded-xl"
               >
-                <p className="text-sm text-teal-300">
+                <p className="text-sm text-teal-700">
                   <span className="font-semibold">선택한 선호도에 맞는 섬:</span>{" "}
                   {matchingIslands.join(", ")}
                 </p>
@@ -255,7 +255,7 @@ export default function PlannerPage() {
             disabled={isTimeInvalid || isGenerating}
             className={`w-full py-5 font-bold rounded-xl text-lg transition-all ${
               isTimeInvalid || isGenerating
-                ? "glass opacity-50 cursor-not-allowed text-gray-400"
+                ? "bg-gray-100 opacity-50 cursor-not-allowed text-gray-400"
                 : "gradient-border glow-ocean text-white hover:scale-[1.02]"
             }`}
           >
@@ -301,9 +301,9 @@ export default function PlannerPage() {
               transition={{ duration: 0.3 }}
             >
               {itineraries.length === 0 ? (
-                <div className="glass-card text-center py-12">
+                <div className="card-solid text-center py-12 rounded-2xl">
                   <span className="text-5xl block mb-4">😢</span>
-                  <p className="text-gray-300 text-lg">
+                  <p className="text-gray-500 text-lg">
                     조건에 맞는 여정을 찾지 못했어요.
                     <br />
                     시간을 넓혀보거나 다른 옵션을 선택해보세요.
@@ -315,7 +315,7 @@ export default function PlannerPage() {
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="glass-strong bg-gradient-to-r from-teal-500/20 via-ocean-500/20 to-purple-500/20 border border-teal-400/30 text-white rounded-2xl p-8 shadow-2xl"
+                    className="card-elevated bg-gradient-to-r from-teal-50 via-ocean-50 to-purple-50 border border-teal-200 rounded-2xl p-8 shadow-2xl"
                   >
                     <div className="stagger-children flex items-center justify-between flex-wrap gap-6">
                       <motion.div
@@ -323,24 +323,24 @@ export default function PlannerPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
                       >
-                        <p className="text-sm text-gray-300 mb-1">총 추천 여정</p>
-                        <p className="text-4xl font-bold">{itineraries.length}개</p>
+                        <p className="text-sm text-gray-500 mb-1">총 추천 여정</p>
+                        <p className="text-4xl font-bold text-navy-700">{itineraries.length}개</p>
                       </motion.div>
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                       >
-                        <p className="text-sm text-gray-300 mb-1">베스트 매치</p>
-                        <p className="text-2xl font-bold">{itineraries[0].island.name}</p>
+                        <p className="text-sm text-gray-500 mb-1">베스트 매치</p>
+                        <p className="text-2xl font-bold text-navy-700">{itineraries[0].island.name}</p>
                       </motion.div>
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                       >
-                        <p className="text-sm text-gray-300 mb-1">예상 소요 시간</p>
-                        <p className="text-2xl font-bold">
+                        <p className="text-sm text-gray-500 mb-1">예상 소요 시간</p>
+                        <p className="text-2xl font-bold text-navy-700">
                           {Math.floor(itineraries[0].totalTime / 60)}시간{" "}
                           {itineraries[0].totalTime % 60 > 0 && `${itineraries[0].totalTime % 60}분`}
                         </p>
@@ -348,7 +348,7 @@ export default function PlannerPage() {
                     </div>
                   </motion.div>
 
-                  <h2 className="font-display text-3xl font-bold text-white">
+                  <h2 className="font-display text-3xl font-bold text-navy-700">
                     🎯 추천 여정
                   </h2>
 
@@ -358,7 +358,7 @@ export default function PlannerPage() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: idx * 0.1 }}
-                      className={`glass-card overflow-hidden ${
+                      className={`card-solid overflow-hidden rounded-2xl ${
                         idx === 0 ? "gradient-border" : ""
                       }`}
                     >
@@ -381,12 +381,12 @@ export default function PlannerPage() {
                           <div>
                             <Link
                               href={`/island/${it.island.id}`}
-                              className="font-display text-2xl font-bold text-white hover:text-teal-300 transition-colors"
+                              className="font-display text-2xl font-bold text-navy-700 hover:text-teal-600 transition-colors"
                               onClick={(e) => e.stopPropagation()}
                             >
                               {it.island.name}
                             </Link>
-                            <p className="text-sm text-gray-400 mt-1">
+                            <p className="text-sm text-gray-500 mt-1">
                               {it.island.cluster} · {it.departureFerry} 출발 ·{" "}
                               {Math.floor(it.totalTime / 60)}시간{" "}
                               {it.totalTime % 60 > 0 && `${it.totalTime % 60}분`} 코스
@@ -396,7 +396,7 @@ export default function PlannerPage() {
                         <motion.span
                           animate={{ rotate: expandedIdx === idx ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
-                          className="text-2xl text-gray-400"
+                          className="text-2xl text-gray-500"
                         >
                           ⌄
                         </motion.span>
@@ -413,13 +413,13 @@ export default function PlannerPage() {
                           >
                             <div className="px-6 pb-6 border-t border-white/10">
                               {/* Ferry Info with Animation */}
-                              <div className="mt-6 mb-6 glass bg-teal-500/10 border border-teal-400/30 rounded-xl p-5">
+                              <div className="mt-6 mb-6 bg-teal-50 border border-teal-200 rounded-xl p-5">
                                 <div className="flex items-center justify-between text-sm">
                                   <div className="text-center">
-                                    <p className="font-bold text-white text-base">
+                                    <p className="font-bold text-navy-700 text-base">
                                       {it.departureFerry}
                                     </p>
-                                    <p className="text-gray-400 mt-1">
+                                    <p className="text-gray-500 mt-1">
                                       {it.ferry.route.split("→")[0] || "출발"}
                                     </p>
                                   </div>
@@ -432,20 +432,20 @@ export default function PlannerPage() {
                                     >
                                       🚢
                                     </motion.span>
-                                    <span className="text-xs text-teal-400 font-semibold glass px-2 py-1 rounded-full">
+                                    <span className="text-xs text-teal-600 font-semibold bg-teal-50 px-2 py-1 rounded-full border border-teal-200">
                                       {it.ferry.duration}분
                                     </span>
                                     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-teal-400 to-transparent" />
                                   </div>
                                   <div className="text-center">
-                                    <p className="font-bold text-white text-base">
+                                    <p className="font-bold text-navy-700 text-base">
                                       {it.island.name}
                                     </p>
-                                    <p className="text-gray-400 mt-1">도착</p>
+                                    <p className="text-gray-500 mt-1">도착</p>
                                   </div>
                                 </div>
                                 {it.ferry.fare > 0 && (
-                                  <p className="text-xs text-teal-300 text-center mt-3 font-medium">
+                                  <p className="text-xs text-teal-600 text-center mt-3 font-medium">
                                     편도 요금: {it.ferry.fare.toLocaleString()}원
                                   </p>
                                 )}
@@ -466,22 +466,22 @@ export default function PlannerPage() {
                                       <div className="absolute left-[-28px] top-10 bottom-0 w-0.5 bg-gradient-to-b from-teal-400 via-ocean-400 to-teal-400" />
                                     )}
                                     {/* Dot */}
-                                    <div className="absolute left-[-32px] top-3 w-4 h-4 rounded-full border-2 border-teal-400 glass bg-teal-500/20 shadow-lg" />
+                                    <div className="absolute left-[-32px] top-3 w-4 h-4 rounded-full border-2 border-teal-400 bg-teal-100 shadow-lg" />
 
                                     <div className="flex items-start gap-4">
-                                      <span className="text-xs font-mono font-bold text-teal-400 mt-1 w-14 flex-shrink-0 glass px-2 py-1 rounded">
+                                      <span className="text-xs font-mono font-bold text-teal-600 mt-1 w-14 flex-shrink-0 bg-gray-100 px-2 py-1 rounded">
                                         {item.time}
                                       </span>
                                       <span className="text-3xl">{item.icon}</span>
                                       <div className="flex-1">
-                                        <p className="font-semibold text-white text-lg">
+                                        <p className="font-semibold text-navy-700 text-lg">
                                           {item.activity}
                                         </p>
-                                        <p className="text-sm text-gray-400 mt-1">
+                                        <p className="text-sm text-gray-500 mt-1">
                                           {item.location}
                                         </p>
                                         {item.duration > 0 && (
-                                          <span className="inline-block mt-2 px-3 py-1 glass bg-teal-500/20 border border-teal-400/30 text-teal-300 text-xs rounded-full font-medium">
+                                          <span className="inline-block mt-2 px-3 py-1 bg-teal-50 border border-teal-200 text-teal-600 text-xs rounded-full font-medium">
                                             약 {item.duration}분
                                           </span>
                                         )}
@@ -492,7 +492,7 @@ export default function PlannerPage() {
                               </div>
 
                               {/* Return Ferry */}
-                              <div className="mt-6 glass bg-gray-500/10 border border-white/10 rounded-xl p-4 text-center text-sm text-gray-300">
+                              <div className="mt-6 bg-gray-50 border border-gray-200 rounded-xl p-4 text-center text-sm text-gray-600">
                                 🚢 {it.returnFerry} 귀환편 탑승 → 여수 도착
                               </div>
 
@@ -502,10 +502,10 @@ export default function PlannerPage() {
                                   initial={{ opacity: 0, y: 10 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ delay: 0.1 }}
-                                  className="glass-strong p-4 rounded-xl"
+                                  className="card-solid p-4 rounded-xl"
                                 >
-                                  <p className="text-xs text-gray-400 mb-2">총 소요 시간</p>
-                                  <p className="font-bold text-white text-lg">
+                                  <p className="text-xs text-gray-500 mb-2">총 소요 시간</p>
+                                  <p className="font-bold text-navy-700 text-lg">
                                     {Math.floor(it.totalTime / 60)}시간{" "}
                                     {it.totalTime % 60 > 0 && `${it.totalTime % 60}분`}
                                   </p>
@@ -514,10 +514,10 @@ export default function PlannerPage() {
                                   initial={{ opacity: 0, y: 10 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ delay: 0.2 }}
-                                  className="glass-strong p-4 rounded-xl"
+                                  className="card-solid p-4 rounded-xl"
                                 >
-                                  <p className="text-xs text-gray-400 mb-2">예상 비용</p>
-                                  <p className="font-bold text-white text-lg">
+                                  <p className="text-xs text-gray-500 mb-2">예상 비용</p>
+                                  <p className="font-bold text-navy-700 text-lg">
                                     {it.ferry.fare > 0
                                       ? `${(it.ferry.fare * 2).toLocaleString()}원`
                                       : "무료"}
@@ -527,10 +527,10 @@ export default function PlannerPage() {
                                   initial={{ opacity: 0, y: 10 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ delay: 0.3 }}
-                                  className="glass-strong p-4 rounded-xl"
+                                  className="card-solid p-4 rounded-xl"
                                 >
-                                  <p className="text-xs text-gray-400 mb-2">주요 활동</p>
-                                  <p className="font-bold text-white text-lg">
+                                  <p className="text-xs text-gray-500 mb-2">주요 활동</p>
+                                  <p className="font-bold text-navy-700 text-lg">
                                     {it.schedule.length - 2}개
                                   </p>
                                 </motion.div>

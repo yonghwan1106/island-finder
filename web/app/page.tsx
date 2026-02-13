@@ -56,7 +56,7 @@ export default function Home() {
 
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
           {/* Glass morphism badge */}
-          <div className="inline-block mb-8 px-6 py-2.5 glass rounded-full text-white/95 text-sm font-medium shadow-lg backdrop-blur-md animate-fade-in-up">
+          <div className="inline-block mb-8 px-6 py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-sm font-medium shadow-lg border border-white/30 animate-fade-in-up">
             ✨ 2026 여수세계섬박람회 공식 연계 프로젝트
           </div>
 
@@ -93,7 +93,7 @@ export default function Home() {
 
             <Link
               href="/dashboard"
-              className="group px-10 py-5 glass text-white font-bold rounded-2xl border-2 border-white/40 hover:bg-white/25 transition-all duration-300 hover:-translate-y-1 text-lg"
+              className="group px-10 py-5 bg-navy-600 text-white font-bold rounded-2xl shadow-lg hover:bg-navy-700 transition-all duration-300 hover:-translate-y-1 text-lg"
             >
               <span className="flex items-center gap-3">
                 <span className="text-2xl">🗺️</span>
@@ -108,7 +108,7 @@ export default function Home() {
 
             <Link
               href="/planner"
-              className="group px-10 py-5 glass text-white font-bold rounded-2xl border-2 border-white/40 hover:bg-white/25 transition-all duration-300 hover:-translate-y-1 text-lg"
+              className="group px-10 py-5 bg-white/15 backdrop-blur-sm text-white font-bold rounded-2xl border-2 border-white/40 hover:bg-white/25 transition-all duration-300 hover:-translate-y-1 text-lg"
             >
               <span className="flex items-center gap-3">
                 <span className="text-2xl">📋</span>
@@ -135,14 +135,14 @@ export default function Home() {
             <h2 className="font-display text-5xl font-bold text-navy-500 mb-6 tracking-tight">
               섬파인더가 특별한 이유
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
               10개 공공데이터를 분석하여 여수의 25개 섬을 8차원으로 프로파일링했습니다
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-10 stagger-children">
             {/* Feature 1 - AI 맞춤 추천 */}
-            <div className="glass-card gradient-border rounded-3xl p-10 relative overflow-hidden noise-overlay">
+            <div className="card-solid rounded-3xl p-10 relative overflow-hidden border-t-4 border-teal-400">
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-100 to-teal-50 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
                   🧬
@@ -150,14 +150,14 @@ export default function Home() {
                 <h3 className="font-display text-2xl font-bold text-navy-500 mb-4">
                   AI 맞춤 추천
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-base">
+                <p className="text-gray-700 leading-relaxed text-base">
                   코사인 유사도 알고리즘으로 당신의 여행 성향과 가장 잘 맞는 섬을 Top-3로 추천합니다.
                 </p>
               </div>
             </div>
 
             {/* Feature 2 - 실시간 데이터 */}
-            <div className="glass-card gradient-border rounded-3xl p-10 relative overflow-hidden noise-overlay">
+            <div className="card-solid rounded-3xl p-10 relative overflow-hidden border-t-4 border-ocean-400">
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-ocean-100 to-ocean-50 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
                   📊
@@ -165,14 +165,14 @@ export default function Home() {
                 <h3 className="font-display text-2xl font-bold text-navy-500 mb-4">
                   실시간 데이터
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-base">
+                <p className="text-gray-700 leading-relaxed text-base">
                   기상청 날씨, 여객선 운항, 관광 정보를 한눈에. 지금 갈 수 있는 섬을 바로 확인하세요.
                 </p>
               </div>
             </div>
 
             {/* Feature 3 - 스마트 여정 */}
-            <div className="glass-card gradient-border rounded-3xl p-10 relative overflow-hidden noise-overlay">
+            <div className="card-solid rounded-3xl p-10 relative overflow-hidden border-t-4 border-sand-400">
               <div className="relative z-10">
                 <div className="w-16 h-16 bg-gradient-to-br from-sand-100 to-sand-50 rounded-2xl flex items-center justify-center text-3xl mb-6 shadow-md">
                   🗓️
@@ -180,7 +180,7 @@ export default function Home() {
                 <h3 className="font-display text-2xl font-bold text-navy-500 mb-4">
                   스마트 여정
                 </h3>
-                <p className="text-gray-600 leading-relaxed text-base">
+                <p className="text-gray-700 leading-relaxed text-base">
                   출발 시간과 선호도만 입력하면, 여객선 시간표 기반으로 최적 여정을 자동 생성합니다.
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="glass-card rounded-2xl p-5 text-center hover:border-teal-300 transition-all duration-300"
+                className="card-solid rounded-2xl p-5 text-center hover:border-teal-300 transition-all duration-300"
               >
                 <p className="text-xs text-teal-600 font-semibold mb-2 uppercase tracking-wide">
                   {item.org}
@@ -238,13 +238,13 @@ export default function Home() {
         <div className="absolute bottom-[15%] right-[20%] w-48 h-48 bg-sand-300/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1.5s" }}></div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="glass-strong rounded-3xl p-12 md:p-16 shadow-2xl">
+          <div className="card-elevated rounded-3xl p-12 md:p-16 shadow-2xl">
             <h2 className="font-display text-4xl md:text-5xl font-bold text-navy-500 mb-6 leading-tight">
               지금 바로 나만의 섬을
               <br />
               찾아보세요
             </h2>
-            <p className="text-lg text-gray-600 mb-10 max-w-xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-700 mb-10 max-w-xl mx-auto leading-relaxed">
               6가지 질문에 답하면 AI가 여수의 25개 섬 중 당신에게 딱 맞는 섬을 추천합니다
             </p>
             <Link

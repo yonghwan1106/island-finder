@@ -23,7 +23,7 @@ import {
 const IslandMap = dynamic(() => import("@/components/IslandMap"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full glass-card rounded-xl animate-pulse flex items-center justify-center">
+    <div className="w-full h-full card-solid rounded-xl animate-pulse flex items-center justify-center">
       <p className="text-navy-400">지도 로딩 중...</p>
     </div>
   ),
@@ -110,7 +110,7 @@ export default function DashboardPage() {
           <h1 className="text-4xl font-display font-bold text-navy-900 mb-2">
             섬 현황 대시보드
           </h1>
-          <p className="text-lg bg-gradient-to-r from-teal-600 to-ocean-600 bg-clip-text text-transparent font-medium">
+          <p className="text-lg text-navy-500 font-medium">
             Ocean Discovery — 실시간 여객선 운항 및 섬 상태 모니터링
           </p>
         </motion.div>
@@ -121,7 +121,7 @@ export default function DashboardPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
-            className="glass-card p-6 border-l-4 border-green-500 bg-gradient-to-br from-green-50/50 to-transparent"
+            className="card-solid p-6 border-l-4 border-green-500 bg-gradient-to-br from-green-50 to-white"
           >
             <div className="flex items-center justify-between">
               <div>
@@ -142,7 +142,7 @@ export default function DashboardPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="glass-card p-6 border-l-4 border-yellow-500 bg-gradient-to-br from-yellow-50/50 to-transparent"
+            className="card-solid p-6 border-l-4 border-yellow-500 bg-gradient-to-br from-yellow-50 to-white"
           >
             <div className="flex items-center justify-between">
               <div>
@@ -163,7 +163,7 @@ export default function DashboardPage() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.3 }}
-            className="glass-card p-6 border-l-4 border-red-500 bg-gradient-to-br from-red-50/50 to-transparent"
+            className="card-solid p-6 border-l-4 border-red-500 bg-gradient-to-br from-red-50 to-white"
           >
             <div className="flex items-center justify-between">
               <div>
@@ -188,14 +188,14 @@ export default function DashboardPage() {
           transition={{ delay: 0.4 }}
           className="mb-6"
         >
-          <div className="glass-strong p-4 rounded-xl">
+          <div className="card-solid p-4 rounded-xl">
             <div className="flex gap-3 flex-wrap">
               <button
                 onClick={() => setSelectedCluster(null)}
                 className={`px-4 py-2 rounded-lg font-medium transition-all ${
                   selectedCluster === null
-                    ? "glass-strong text-white shadow-lg scale-105 glow-ocean"
-                    : "glass hover:scale-105"
+                    ? "text-white shadow-lg scale-105"
+                    : "bg-gray-50 hover:scale-105 border border-gray-200"
                 }`}
                 style={
                   selectedCluster === null
@@ -213,7 +213,7 @@ export default function DashboardPage() {
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${
                     selectedCluster === cluster.id
                       ? `text-white shadow-lg scale-105`
-                      : "glass hover:scale-105"
+                      : "bg-gray-50 hover:scale-105 border border-gray-200"
                   }`}
                   style={
                     selectedCluster === cluster.id
@@ -259,7 +259,7 @@ export default function DashboardPage() {
                       setSelectedIsland(island);
                       setActiveTab("attractions");
                     }}
-                    className={`relative glass-card p-4 rounded-xl text-left transition-all hover:scale-105 ${
+                    className={`relative card-solid p-4 rounded-xl text-left transition-all hover:scale-105 ${
                       isSelected ? "gradient-border ring-2 ring-teal-400 shadow-xl" : "hover:shadow-lg"
                     }`}
                     style={{
@@ -289,7 +289,7 @@ export default function DashboardPage() {
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <div className="glass px-2 py-1 rounded text-xs font-medium text-navy-700">
+                      <div className="bg-gray-100 px-2 py-1 rounded text-xs font-medium text-navy-700">
                         {island.weather.temp}°C
                       </div>
                       <span className="text-sm">{getWeatherIcon(island.weather.condition)}</span>
@@ -305,7 +305,7 @@ export default function DashboardPage() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
-            className="lg:col-span-2 glass-card p-6 rounded-2xl"
+            className="lg:col-span-2 card-elevated p-6 rounded-2xl"
           >
             <div className="h-[600px] rounded-xl overflow-hidden noise-overlay">
               <IslandMap
@@ -326,7 +326,7 @@ export default function DashboardPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 50 }}
               transition={{ type: "spring", damping: 25 }}
-              className="mt-6 glass-strong rounded-2xl p-8 elevated-card"
+              className="mt-6 card-elevated rounded-2xl p-8"
             >
               <div className="mb-6">
                 <h2 className="text-3xl font-display font-bold text-navy-900 mb-2">
@@ -349,8 +349,8 @@ export default function DashboardPage() {
                     onClick={() => setActiveTab(tab.id as typeof activeTab)}
                     className={`flex items-center gap-2 px-6 py-3 font-medium transition-all relative rounded-t-lg ${
                       activeTab === tab.id
-                        ? "glass text-teal-600 glow-teal"
-                        : "text-navy-600 hover:text-navy-900 hover:glass"
+                        ? "bg-white shadow-sm text-teal-600"
+                        : "text-gray-500 hover:text-gray-700 hover:bg-gray-50"
                     }`}
                   >
                     <tab.icon className="w-4 h-4" />
@@ -386,7 +386,7 @@ export default function DashboardPage() {
                           {selectedIsland.attractions.map((attr, idx) => (
                             <div
                               key={idx}
-                              className="glass-card px-3 py-2 rounded-lg text-sm text-navy-700 bg-gradient-to-br from-teal-50/50 to-transparent"
+                              className="bg-teal-50 px-3 py-2 rounded-lg text-sm text-navy-700 border border-teal-100"
                             >
                               {attr}
                             </div>
@@ -403,7 +403,7 @@ export default function DashboardPage() {
                           {selectedIsland.culturalSites.map((site, idx) => (
                             <div
                               key={idx}
-                              className="glass-card px-3 py-2 rounded-lg text-sm text-navy-700 bg-gradient-to-br from-purple-50/50 to-transparent"
+                              className="bg-purple-50 px-3 py-2 rounded-lg text-sm text-navy-700 border border-purple-100"
                             >
                               {site}
                             </div>
@@ -412,13 +412,13 @@ export default function DashboardPage() {
                       </div>
 
                       <div className="grid grid-cols-3 gap-4 pt-4 border-t border-navy-100">
-                        <div className="text-center glass-card p-3 rounded-lg">
+                        <div className="text-center card-solid p-3 rounded-lg">
                           <p className="text-navy-600 text-sm mb-1">면적</p>
                           <p className="text-xl font-bold text-navy-900">
                             {selectedIsland.area}km²
                           </p>
                         </div>
-                        <div className="text-center glass-card p-3 rounded-lg flex flex-col items-center justify-center">
+                        <div className="text-center card-solid p-3 rounded-lg flex flex-col items-center justify-center">
                           <p className="text-navy-600 text-sm mb-1">음식점</p>
                           <div className="flex items-center gap-1">
                             <Utensils className="w-4 h-4 text-orange-600" />
@@ -427,7 +427,7 @@ export default function DashboardPage() {
                             </p>
                           </div>
                         </div>
-                        <div className="text-center glass-card p-3 rounded-lg flex flex-col items-center justify-center">
+                        <div className="text-center card-solid p-3 rounded-lg flex flex-col items-center justify-center">
                           <p className="text-navy-600 text-sm mb-1">숙박시설</p>
                           <div className="flex items-center gap-1">
                             <Home className="w-4 h-4 text-blue-600" />
@@ -443,32 +443,32 @@ export default function DashboardPage() {
                   {activeTab === "ferry" && (
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="glass-card p-4 rounded-lg">
+                        <div className="card-solid p-4 rounded-lg">
                           <p className="text-navy-600 text-sm mb-1">출발 항구</p>
                           <p className="text-lg font-bold text-navy-900">
                             {selectedIsland.ferryPort}
                           </p>
                         </div>
-                        <div className="glass-card p-4 rounded-lg">
+                        <div className="card-solid p-4 rounded-lg">
                           <p className="text-navy-600 text-sm mb-1">운항 시간</p>
                           <p className="text-lg font-bold text-navy-900">
                             {selectedIsland.travelTime}분
                           </p>
                         </div>
-                        <div className="glass-card p-4 rounded-lg">
+                        <div className="card-solid p-4 rounded-lg">
                           <p className="text-navy-600 text-sm mb-1">차편</p>
                           <p className="text-lg font-bold text-navy-900">
                             {selectedIsland.ferryName}
                           </p>
                         </div>
-                        <div className="glass-card p-4 rounded-lg">
+                        <div className="card-solid p-4 rounded-lg">
                           <p className="text-navy-600 text-sm mb-1">운항 빈도</p>
                           <p className="text-lg font-bold text-navy-900">
                             1일 {selectedIsland.ferryFrequency}회
                           </p>
                         </div>
                       </div>
-                      <div className="glass-card p-4 rounded-lg bg-gradient-to-r from-teal-50/80 to-ocean-50/80 border border-teal-200 glow-teal">
+                      <div className="card-solid p-4 rounded-lg bg-gradient-to-r from-teal-50 to-ocean-50 border border-teal-200">
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-navy-600 text-sm mb-1">다음 운항 시간</p>
@@ -484,7 +484,7 @@ export default function DashboardPage() {
 
                   {activeTab === "weather" && (
                     <div className="space-y-4">
-                      <div className="glass-card p-6 rounded-xl bg-gradient-to-br from-blue-50/80 to-cyan-50/80 border border-blue-200 glow-ocean">
+                      <div className="card-solid p-6 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200">
                         <div className="flex items-center justify-between mb-4">
                           <div>
                             <p className="text-navy-600 mb-2">현재 날씨</p>
@@ -502,7 +502,7 @@ export default function DashboardPage() {
                       </div>
 
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="glass-card p-4 rounded-lg border border-navy-200">
+                        <div className="card-solid p-4 rounded-lg border border-navy-200">
                           <div className="flex items-center gap-2 mb-2">
                             <Wind className="w-5 h-5 text-blue-600" />
                             <p className="text-navy-600 text-sm">풍속</p>
@@ -511,7 +511,7 @@ export default function DashboardPage() {
                             {selectedIsland.weather.wind}m/s
                           </p>
                         </div>
-                        <div className="glass-card p-4 rounded-lg border border-navy-200">
+                        <div className="card-solid p-4 rounded-lg border border-navy-200">
                           <div className="flex items-center gap-2 mb-2">
                             <Waves className="w-5 h-5 text-cyan-600" />
                             <p className="text-navy-600 text-sm">파고</p>
@@ -522,7 +522,7 @@ export default function DashboardPage() {
                         </div>
                       </div>
 
-                      <div className="glass-card p-4 rounded-lg bg-gradient-to-br from-yellow-50/80 to-transparent border border-yellow-200">
+                      <div className="card-solid p-4 rounded-lg bg-gradient-to-br from-yellow-50 to-white border border-yellow-200">
                         <div className="flex items-center gap-2 mb-2">
                           <Calendar className="w-5 h-5 text-yellow-700" />
                           <p className="text-navy-900 font-medium">최적 방문 시기</p>
@@ -540,7 +540,7 @@ export default function DashboardPage() {
                           {selectedIsland.activities.map((activity, idx) => (
                             <div
                               key={idx}
-                              className="glass-card px-4 py-2 rounded-full text-sm font-medium text-navy-700 bg-gradient-to-r from-teal-50/80 to-ocean-50/80 border border-teal-200"
+                              className="bg-teal-50 px-4 py-2 rounded-full text-sm font-medium text-navy-700 border border-teal-200"
                             >
                               {activity}
                             </div>
@@ -554,7 +554,7 @@ export default function DashboardPage() {
                           {selectedIsland.hashtags.map((tag, idx) => (
                             <div
                               key={idx}
-                              className="glass-card px-4 py-2 rounded-full text-sm font-medium text-purple-700 bg-gradient-to-r from-purple-50/80 to-transparent border border-purple-200"
+                              className="bg-purple-50 px-4 py-2 rounded-full text-sm font-medium text-purple-700 border border-purple-200"
                             >
                               {tag}
                             </div>
@@ -567,7 +567,7 @@ export default function DashboardPage() {
                   {activeTab === "marine" && (
                     <div className="space-y-4">
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="glass-card p-4 rounded-lg bg-cyan-500/5">
+                        <div className="card-solid p-4 rounded-lg bg-cyan-500/5">
                           <div className="flex items-center gap-2 mb-2">
                             <Waves className="w-5 h-5 text-cyan-600" />
                             <p className="text-navy-600 text-sm">해수면 온도</p>
@@ -576,7 +576,7 @@ export default function DashboardPage() {
                             {selectedIsland.marine.seaTemp}°C
                           </p>
                         </div>
-                        <div className="glass-card p-4 rounded-lg bg-teal-500/5">
+                        <div className="card-solid p-4 rounded-lg bg-teal-500/5">
                           <div className="flex items-center gap-2 mb-2">
                             <MapPin className="w-5 h-5 text-teal-600" />
                             <p className="text-navy-600 text-sm">수질 등급</p>
@@ -585,7 +585,7 @@ export default function DashboardPage() {
                             {selectedIsland.marine.waterQuality}등급
                           </p>
                         </div>
-                        <div className="glass-card p-4 rounded-lg bg-ocean-500/5">
+                        <div className="card-solid p-4 rounded-lg bg-ocean-500/5">
                           <div className="flex items-center gap-2 mb-2">
                             <Wind className="w-5 h-5 text-ocean-600" />
                             <p className="text-navy-600 text-sm">투명도</p>
@@ -594,7 +594,7 @@ export default function DashboardPage() {
                             {selectedIsland.marine.transparency}m
                           </p>
                         </div>
-                        <div className="glass-card p-4 rounded-lg bg-blue-500/5">
+                        <div className="card-solid p-4 rounded-lg bg-blue-500/5">
                           <div className="flex items-center gap-2 mb-2">
                             <Cloud className="w-5 h-5 text-blue-600" />
                             <p className="text-navy-600 text-sm">용존산소</p>
@@ -614,7 +614,7 @@ export default function DashboardPage() {
                           </h3>
                           <div className="space-y-2">
                             {selectedIsland.festivals.map((fest, idx) => (
-                              <div key={idx} className="glass-card p-3 rounded-lg">
+                              <div key={idx} className="card-solid p-3 rounded-lg">
                                 <div className="flex items-center gap-2">
                                   <span className="text-xl">🎪</span>
                                   <div>
@@ -636,7 +636,7 @@ export default function DashboardPage() {
               {/* RadarChart */}
               <div className="mt-8 pt-8 border-t border-navy-200">
                 <h3 className="font-display font-bold text-navy-900 mb-4 text-center">섬 특성 분석</h3>
-                <div className="flex justify-center glass-card p-6 rounded-xl gradient-border">
+                <div className="flex justify-center card-elevated p-6 rounded-xl">
                   <RadarChart
                     vector={selectedIsland.vector}
                     color={
@@ -658,7 +658,7 @@ export default function DashboardPage() {
                 </a>
                 <a
                   href={`/island/${selectedIsland.id}`}
-                  className="px-6 py-3 glass text-navy-700 font-bold rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-105 border border-navy-200"
+                  className="px-6 py-3 bg-white text-navy-700 font-bold rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-105 border border-gray-200"
                 >
                   섬 상세보기
                 </a>

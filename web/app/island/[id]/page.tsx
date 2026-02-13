@@ -77,9 +77,9 @@ export default function IslandPage({ params }: IslandPageProps) {
   if (!island) {
     return (
       <div className="min-h-screen page-bg flex items-center justify-center">
-        <div className="text-center glass-card p-12 max-w-md">
+        <div className="text-center card-solid p-12 max-w-md">
           <h1 className="text-3xl font-display font-bold text-navy-700 mb-6">섬을 찾을 수 없습니다</h1>
-          <Link href="/dashboard" className="glass px-6 py-3 rounded-xl text-teal-600 hover:glow-teal transition-all inline-block font-medium">
+          <Link href="/dashboard" className="bg-teal-50 px-6 py-3 rounded-xl text-teal-600 hover:shadow-md transition-all inline-block font-medium border border-teal-200">
             대시보드로 돌아가기
           </Link>
         </div>
@@ -116,7 +116,7 @@ export default function IslandPage({ params }: IslandPageProps) {
         >
           <Link
             href="/dashboard"
-            className="inline-flex items-center glass px-5 py-2.5 rounded-xl text-navy-600 hover:glow-teal transition-all mb-6 font-medium"
+            className="inline-flex items-center bg-white px-5 py-2.5 rounded-xl text-navy-600 hover:shadow-md transition-all mb-6 font-medium border border-gray-200"
           >
             ← 대시보드로 돌아가기
           </Link>
@@ -125,21 +125,21 @@ export default function IslandPage({ params }: IslandPageProps) {
             <h1 className="text-5xl md:text-6xl font-display font-bold text-navy-700 mb-3 tracking-tight">
               {island.name}
             </h1>
-            <p className="text-2xl md:text-3xl bg-gradient-to-r from-ocean-600 to-teal-600 bg-clip-text text-transparent font-medium mb-6">
+            <p className="text-2xl md:text-3xl text-teal-600 font-medium mb-6">
               {island.nameEn}
             </p>
 
             <div className="flex items-center gap-4 flex-wrap">
               {cluster && (
                 <span
-                  className="glass px-5 py-2.5 rounded-full text-white font-medium shadow-lg"
+                  className="px-5 py-2.5 rounded-full text-white font-medium shadow-lg"
                   style={{ backgroundColor: cluster.color }}
                 >
                   {cluster.icon} {cluster.name}
                 </span>
               )}
 
-              <div className="flex items-center gap-3 glass px-5 py-2.5 rounded-full">
+              <div className="flex items-center gap-3 bg-gray-100 px-5 py-2.5 rounded-full border border-gray-200">
                 <div className={`w-3 h-3 rounded-full ${statusConfig[island.status].color} shadow-lg`}></div>
                 <span className="text-navy-600 font-medium">{statusConfig[island.status].label}</span>
               </div>
@@ -152,32 +152,32 @@ export default function IslandPage({ params }: IslandPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="glass-card gradient-border p-8 md:p-10 mb-6"
+          className="card-elevated p-8 md:p-10 mb-6 rounded-2xl"
         >
-          <p className="text-lg text-navy-600 mb-8 leading-relaxed">{island.description}</p>
+          <p className="text-lg text-gray-700 mb-8 leading-relaxed">{island.description}</p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-            <div className="text-center p-5 glass rounded-xl bg-gradient-to-br from-ocean-500/10 to-teal-500/10">
+            <div className="text-center p-5 bg-gray-50 rounded-xl border border-gray-200">
               <div className="text-3xl font-bold text-navy-700">{island.area}</div>
-              <div className="text-sm text-gray-600 mt-1">면적 (km²)</div>
+              <div className="text-sm text-gray-500 mt-1">면적 (km²)</div>
             </div>
-            <div className="text-center p-5 glass rounded-xl bg-gradient-to-br from-ocean-500/10 to-teal-500/10">
+            <div className="text-center p-5 bg-gray-50 rounded-xl border border-gray-200">
               <div className="text-3xl font-bold text-navy-700">{island.population}</div>
-              <div className="text-sm text-gray-600 mt-1">인구</div>
+              <div className="text-sm text-gray-500 mt-1">인구</div>
             </div>
-            <div className="text-center p-5 glass rounded-xl bg-gradient-to-br from-ocean-500/10 to-teal-500/10">
+            <div className="text-center p-5 bg-gray-50 rounded-xl border border-gray-200">
               <div className="text-3xl font-bold text-navy-700">{island.travelTime}분</div>
-              <div className="text-sm text-gray-600 mt-1">소요시간</div>
+              <div className="text-sm text-gray-500 mt-1">소요시간</div>
             </div>
-            <div className="text-center p-5 glass rounded-xl bg-gradient-to-br from-ocean-500/10 to-teal-500/10">
+            <div className="text-center p-5 bg-gray-50 rounded-xl border border-gray-200">
               <div className="text-3xl font-bold text-navy-700">{island.bestSeason}</div>
-              <div className="text-sm text-gray-600 mt-1">최적시기</div>
+              <div className="text-sm text-gray-500 mt-1">최적시기</div>
             </div>
           </div>
 
           <div className="flex flex-wrap gap-2">
             {island.hashtags.map((tag, idx) => (
-              <span key={idx} className="glass px-4 py-2 rounded-full text-teal-700 text-sm font-medium bg-teal-500/10">
+              <span key={idx} className="bg-teal-50 px-4 py-2 rounded-full text-teal-700 text-sm font-medium border border-teal-200">
                 {tag}
               </span>
             ))}
@@ -189,7 +189,7 @@ export default function IslandPage({ params }: IslandPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="glass-card gradient-border p-8 md:p-10 mb-6"
+          className="card-solid p-8 md:p-10 mb-6 rounded-2xl"
         >
           <h2 className="text-3xl font-display font-bold text-navy-700 mb-8">섬 프로파일 분석</h2>
 
@@ -199,10 +199,10 @@ export default function IslandPage({ params }: IslandPageProps) {
 
           <div className="space-y-4">
             {dimensions.map((dim, idx) => (
-              <div key={dim.key} className="glass p-4 rounded-xl">
+              <div key={dim.key} className="bg-gray-50 p-4 rounded-xl border border-gray-200">
                 <div className="flex justify-between mb-2">
                   <span className="text-sm font-semibold text-navy-600">{dim.label}</span>
-                  <span className="text-sm font-bold bg-gradient-to-r from-ocean-600 to-teal-600 bg-clip-text text-transparent">
+                  <span className="text-sm font-bold text-teal-600">
                     {Math.round(dim.value * 100)}%
                   </span>
                 </div>
@@ -225,7 +225,7 @@ export default function IslandPage({ params }: IslandPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="glass-card p-8 stagger-children"
+            className="card-solid p-8 rounded-2xl stagger-children"
           >
             <h2 className="text-2xl font-display font-bold text-navy-700 mb-6">관광지 & 문화재</h2>
 
@@ -236,7 +236,7 @@ export default function IslandPage({ params }: IslandPageProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.05 }}
-                  className="flex items-center gap-3 glass p-4 rounded-xl bg-ocean-500/5"
+                  className="flex items-center gap-3 bg-ocean-50 p-4 rounded-xl border border-ocean-100"
                 >
                   <span className="text-2xl">📍</span>
                   <span className="text-navy-600 font-medium">{attraction}</span>
@@ -249,7 +249,7 @@ export default function IslandPage({ params }: IslandPageProps) {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: (island.attractions.length + idx) * 0.05 }}
-                  className="flex items-center gap-3 glass p-4 rounded-xl bg-teal-500/5"
+                  className="flex items-center gap-3 bg-teal-50 p-4 rounded-xl border border-teal-100"
                 >
                   <span className="text-2xl">🏛️</span>
                   <span className="text-navy-600 font-medium">{site}</span>
@@ -263,7 +263,7 @@ export default function IslandPage({ params }: IslandPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className="glass-card p-8 stagger-children"
+            className="card-solid p-8 rounded-2xl stagger-children"
           >
             <h2 className="text-2xl font-display font-bold text-navy-700 mb-6">즐길거리</h2>
 
@@ -289,7 +289,7 @@ export default function IslandPage({ params }: IslandPageProps) {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: idx * 0.05 }}
-                    className="glass px-5 py-3 rounded-full font-medium bg-gradient-to-r from-teal-500/20 to-ocean-500/20 text-navy-700 border border-teal-500/30"
+                    className="bg-teal-50 px-5 py-3 rounded-full font-medium text-navy-700 border border-teal-200"
                   >
                     {icon} {activity}
                   </motion.span>
@@ -304,7 +304,7 @@ export default function IslandPage({ params }: IslandPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="glass-card p-8 md:p-10 mb-6"
+          className="card-solid p-8 md:p-10 mb-6 rounded-2xl"
         >
           <h2 className="text-3xl font-display font-bold text-navy-700 mb-8">여객선 정보</h2>
 
@@ -330,9 +330,9 @@ export default function IslandPage({ params }: IslandPageProps) {
               </div>
             </div>
 
-            <div className="glass gradient-border p-6 rounded-xl bg-gradient-to-br from-teal-500/10 to-ocean-500/10">
+            <div className="bg-teal-50 p-6 rounded-xl border border-teal-200">
               <div className="text-sm text-navy-600 mb-2 font-medium">다음 출항</div>
-              <div className="text-4xl font-bold bg-gradient-to-r from-teal-600 to-ocean-600 bg-clip-text text-transparent glow-teal">
+              <div className="text-4xl font-bold text-teal-600">
                 {island.nextFerry}
               </div>
             </div>
@@ -341,19 +341,19 @@ export default function IslandPage({ params }: IslandPageProps) {
           {ferrySchedule && (
             <div>
               <h3 className="text-xl font-display font-bold text-navy-700 mb-4">운항 시간표</h3>
-              <div className="glass p-6 rounded-xl bg-ocean-500/5">
+              <div className="bg-gray-50 p-6 rounded-xl border border-gray-200">
                 <div className="grid grid-cols-4 md:grid-cols-6 gap-3">
                   {ferrySchedule.departures.map((time, idx) => (
                     <div
                       key={idx}
-                      className="text-center py-3 glass rounded-lg font-semibold text-navy-700"
+                      className="text-center py-3 bg-white rounded-lg font-semibold text-navy-700 border border-gray-200"
                     >
                       {time}
                     </div>
                   ))}
                 </div>
                 <div className="mt-6 text-sm text-navy-600">
-                  요금: <span className="font-bold text-lg bg-gradient-to-r from-teal-600 to-ocean-600 bg-clip-text text-transparent">
+                  요금: <span className="font-bold text-lg text-teal-600">
                     {ferrySchedule.fare.toLocaleString()}원
                   </span>
                 </div>
@@ -367,24 +367,24 @@ export default function IslandPage({ params }: IslandPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.45 }}
-          className="glass-card p-8 md:p-10 mb-6"
+          className="card-solid p-8 md:p-10 mb-6 rounded-2xl"
         >
           <h2 className="text-3xl font-display font-bold text-navy-700 mb-8">현재 날씨</h2>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="text-center p-6 glass gradient-border rounded-xl bg-gradient-to-br from-ocean-100 to-teal-100">
+            <div className="text-center p-6 bg-gradient-to-br from-ocean-100 to-teal-100 rounded-xl border border-ocean-200">
               <div className="text-5xl mb-3">{getWeatherIcon(island.weather.condition)}</div>
               <div className="text-sm font-semibold text-navy-600">{island.weather.condition}</div>
             </div>
-            <div className="text-center p-6 glass rounded-xl bg-ocean-500/5">
+            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
               <div className="text-4xl font-bold text-navy-700">{island.weather.temp}°C</div>
               <div className="text-sm text-gray-600 mt-2">기온</div>
             </div>
-            <div className="text-center p-6 glass rounded-xl bg-ocean-500/5">
+            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
               <div className="text-4xl font-bold text-navy-700">{island.weather.wind}m/s</div>
               <div className="text-sm text-gray-600 mt-2">풍속</div>
             </div>
-            <div className="text-center p-6 glass rounded-xl bg-ocean-500/5">
+            <div className="text-center p-6 bg-gray-50 rounded-xl border border-gray-200">
               <div className="text-4xl font-bold text-navy-700">{island.weather.wave}m</div>
               <div className="text-sm text-gray-600 mt-2">파고</div>
             </div>
@@ -396,25 +396,25 @@ export default function IslandPage({ params }: IslandPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.48 }}
-          className="glass-card p-8 md:p-10 mb-6"
+          className="card-solid p-8 md:p-10 mb-6 rounded-2xl"
         >
           <h2 className="text-3xl font-display font-bold text-navy-700 mb-3">해양 환경</h2>
           <p className="text-sm text-gray-500 mb-8">출처: 해양환경공단 해양환경측정망</p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="text-center p-6 glass rounded-xl bg-cyan-500/5">
+            <div className="text-center p-6 bg-cyan-50 rounded-xl border border-cyan-200">
               <div className="text-4xl font-bold text-cyan-700">{island.marine.seaTemp}°C</div>
               <div className="text-sm text-gray-600 mt-2">해수면 온도</div>
             </div>
-            <div className="text-center p-6 glass rounded-xl bg-teal-500/5">
+            <div className="text-center p-6 bg-teal-50 rounded-xl border border-teal-200">
               <div className="text-4xl font-bold text-teal-700">{island.marine.waterQuality}등급</div>
               <div className="text-sm text-gray-600 mt-2">수질 등급</div>
             </div>
-            <div className="text-center p-6 glass rounded-xl bg-ocean-500/5">
+            <div className="text-center p-6 bg-ocean-50 rounded-xl border border-ocean-200">
               <div className="text-4xl font-bold text-ocean-700">{island.marine.transparency}m</div>
               <div className="text-sm text-gray-600 mt-2">투명도</div>
             </div>
-            <div className="text-center p-6 glass rounded-xl bg-blue-500/5">
+            <div className="text-center p-6 bg-blue-50 rounded-xl border border-blue-200">
               <div className="text-4xl font-bold text-blue-700">{island.marine.dissolvedOxygen}</div>
               <div className="text-sm text-gray-600 mt-2">용존산소 (mg/L)</div>
             </div>
@@ -427,14 +427,14 @@ export default function IslandPage({ params }: IslandPageProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.49 }}
-            className="glass-card p-8 md:p-10 mb-6"
+            className="card-solid p-8 md:p-10 mb-6 rounded-2xl"
           >
             <h2 className="text-3xl font-display font-bold text-navy-700 mb-3">지역 축제</h2>
             <p className="text-sm text-gray-500 mb-8">출처: 문화체육관광부 지역축제 정보</p>
 
             <div className="grid md:grid-cols-2 gap-4">
               {island.festivals.map((festival, idx) => (
-                <div key={idx} className="glass gradient-border rounded-xl p-6">
+                <div key={idx} className="card-solid p-6">
                   <div className="flex items-start gap-4">
                     <span className="text-3xl">🎪</span>
                     <div>
@@ -454,7 +454,7 @@ export default function IslandPage({ params }: IslandPageProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="glass-card p-8 md:p-10 mb-6"
+          className="card-solid p-8 md:p-10 mb-6 rounded-2xl"
         >
           <h2 className="text-3xl font-display font-bold text-navy-700 mb-8">이 섬과 비슷한 섬</h2>
 
@@ -463,13 +463,13 @@ export default function IslandPage({ params }: IslandPageProps) {
               <Link
                 key={similarIsland.id}
                 href={`/island/${similarIsland.id}`}
-                className="block glass-card p-6 rounded-xl hover:gradient-border transition-all duration-300 group"
+                className="block card-solid p-6 rounded-xl hover:shadow-lg transition-all duration-300 group"
               >
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-display font-bold text-navy-700 group-hover:text-teal-600 transition-colors">
                     {similarIsland.name}
                   </h3>
-                  <span className="text-2xl font-bold bg-gradient-to-r from-teal-600 to-ocean-600 bg-clip-text text-transparent">
+                  <span className="text-2xl font-bold text-teal-600">
                     {Math.round(similarity * 100)}%
                   </span>
                 </div>
@@ -489,13 +489,13 @@ export default function IslandPage({ params }: IslandPageProps) {
         >
           <Link
             href="/planner"
-            className="flex-1 py-5 px-8 glass gradient-border rounded-xl font-bold text-center bg-gradient-to-r from-teal-500/20 to-ocean-500/20 text-navy-700 hover:glow-teal transition-all text-lg"
+            className="flex-1 py-5 px-8 bg-teal-500 rounded-xl font-bold text-center text-white hover:bg-teal-600 transition-all text-lg shadow-lg"
           >
             이 섬으로 여정 만들기 ✈️
           </Link>
           <Link
             href="/quiz"
-            className="flex-1 py-5 px-8 glass gradient-border rounded-xl font-bold text-center bg-gradient-to-r from-navy-500/20 to-navy-600/20 text-navy-700 hover:glow-ocean transition-all text-lg"
+            className="flex-1 py-5 px-8 bg-white rounded-xl font-bold text-center text-navy-700 hover:shadow-lg transition-all text-lg border border-gray-200"
           >
             퀴즈로 나의 섬 찾기 🧭
           </Link>
