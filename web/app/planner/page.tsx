@@ -119,7 +119,7 @@ export default function PlannerPage() {
             </div>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-600 mb-3">
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
                   출발 시간
                 </label>
                 <input
@@ -130,7 +130,7 @@ export default function PlannerPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-600 mb-3">
+                <label className="block text-sm font-semibold text-gray-700 mb-3">
                   귀환 시간
                 </label>
                 <input
